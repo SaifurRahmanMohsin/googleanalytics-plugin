@@ -1,4 +1,4 @@
-<?php namespace RainLab\GoogleAnalytics\Classes;
+<?php namespace Mohsin\GoogleAnalytics\Classes;
 
 use Psr\Cache\CacheItemInterface;
 use DateTimeInterface;

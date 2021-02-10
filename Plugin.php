@@ -1,4 +1,4 @@
-<?php namespace RainLab\GoogleAnalytics;
+<?php namespace Mohsin\GoogleAnalytics;
 
 use System\Classes\PluginBase;
 
@@ -8,30 +8,30 @@ class Plugin extends PluginBase
     {
         return [
             'name'        => 'Google Analytics',
-            'description' => 'rainlab.googleanalytics::lang.strings.plugin_desc',
-            'author'      => 'Alexey Bobkov, Samuel Georges',
+            'description' => 'mohsin.googleanalytics::lang.strings.plugin_desc',
+            'author'      => 'Saifur Rahman Mohsin',
             'icon'        => 'icon-bar-chart-o',
-            'homepage'    => 'https://github.com/rainlab/googleanalytics-plugin'
+            'homepage'    => 'https://github.com/mohsin/googleanalytics-plugin'
         ];
     }
 
     public function registerComponents()
     {
         return [
-            '\RainLab\GoogleAnalytics\Components\Tracker' => 'googleTracker'
+            '\Mohsin\GoogleAnalytics\Components\Tracker' => 'googleTracker'
         ];
     }
 
     public function registerPermissions()
     {
         return [
-            'rainlab.googleanalytics.access_settings' => [
-                'tab'   => 'rainlab.googleanalytics::lang.permissions.tab',
-                'label' => 'rainlab.googleanalytics::lang.permissions.settings'
+            'mohsin.googleanalytics.access_settings' => [
+                'tab'   => 'mohsin.googleanalytics::lang.permissions.tab',
+                'label' => 'mohsin.googleanalytics::lang.permissions.settings'
             ],
-            'rainlab.googleanalytics.view_widgets' => [
-                'tab'   => 'rainlab.googleanalytics::lang.permissions.tab',
-                'label' => 'rainlab.googleanalytics::lang.permissions.widgets'
+            'mohsin.googleanalytics.view_widgets' => [
+                'tab'   => 'mohsin.googleanalytics::lang.permissions.tab',
+                'label' => 'mohsin.googleanalytics::lang.permissions.widgets'
             ]
         ];
     }
@@ -39,30 +39,13 @@ class Plugin extends PluginBase
     public function registerReportWidgets()
     {
         return [
-            'RainLab\GoogleAnalytics\ReportWidgets\TrafficOverview' => [
-                'label'       => 'Google Analytics traffic overview',
-                'context'     => 'dashboard',
-                'permissions' => ['rainlab.googleanalytics.view_widgets']
+            'Mohsin\GoogleAnalytics\ReportWidgets\LineChart' => [
+                'label'   => 'mohsin.googleanalytics::lang.linechart.label',
+                'context' => 'dashboard'
             ],
-            'RainLab\GoogleAnalytics\ReportWidgets\TrafficSources' => [
-                'label'       => 'Google Analytics traffic sources',
-                'context'     => 'dashboard',
-                'permissions' => ['rainlab.googleanalytics.view_widgets']
-            ],
-            'RainLab\GoogleAnalytics\ReportWidgets\Browsers' => [
-                'label'       => 'Google Analytics browsers',
-                'context'     => 'dashboard',
-                'permissions' => ['rainlab.googleanalytics.view_widgets']
-            ],
-            'RainLab\GoogleAnalytics\ReportWidgets\TrafficGoal' => [
-                'label'       => 'Google Analytics traffic goal',
-                'context'     => 'dashboard',
-                'permissions' => ['rainlab.googleanalytics.view_widgets']
-            ],
-            'RainLab\GoogleAnalytics\ReportWidgets\TopPages' => [
-                'label'       => 'Google Analytics top pages',
-                'context'     => 'dashboard',
-                'permissions' => ['rainlab.googleanalytics.view_widgets']
+            'Mohsin\GoogleAnalytics\ReportWidgets\BarChart' => [
+                'label'   => 'mohsin.googleanalytics::lang.barchart.label',
+                'context' => 'dashboard'
             ]
         ];
     }
@@ -71,18 +54,13 @@ class Plugin extends PluginBase
     {
         return [
             'config' => [
-                'label'       => 'Google Analytics',
+                'label'       => 'Google Analytics 4',
                 'icon'        => 'icon-bar-chart-o',
-                'description' => 'rainlab.googleanalytics::lang.strings.settings_desc',
-                'class'       => 'RainLab\GoogleAnalytics\Models\Settings',
-                'permissions' => ['rainlab.googleanalytics.access_settings'],
-                'order'       => 600
+                'description' => 'mohsin.googleanalytics::lang.strings.settings_desc',
+                'class'       => 'Mohsin\GoogleAnalytics\Models\Settings',
+                'permissions' => ['mohsin.googleanalytics.access_settings'],
+                'order'       => 601
             ]
         ];
-    }
-
-    public function boot()
-    {
-        set_include_path(get_include_path() . PATH_SEPARATOR . __DIR__.'/vendor/google/apiclient/src');
     }
 }

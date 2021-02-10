@@ -1,21 +1,21 @@
-<?php namespace RainLab\GoogleAnalytics\Components;
+<?php namespace Mohsin\GoogleAnalytics\Components;
 
 use Cms\Classes\ComponentBase;
-use RainLab\GoogleAnalytics\Models\Settings;
+use Mohsin\GoogleAnalytics\Models\Settings;
 
 class Tracker extends ComponentBase
 {
     public function componentDetails()
     {
         return [
-            'name'        => 'rainlab.googleanalytics::lang.strings.tracker',
-            'description' => 'rainlab.googleanalytics::lang.strings.tracker_desc'
+            'name'        => 'mohsin.googleanalytics::lang.strings.tracker',
+            'description' => 'mohsin.googleanalytics::lang.strings.tracker_desc'
         ];
     }
 
     public function trackingId()
     {
-        return Settings::get('tracking_id');
+        return Settings::get('web_measurement_id');
     }
 
     public function domainName()

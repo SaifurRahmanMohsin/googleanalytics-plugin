@@ -1,22 +1,17 @@
 {
-    "name": "rainlab/googleanalytics",
+    "name": "mohsin/googleanalytics",
     "type": "october-plugin",
-    "description": "Google Analytics integration plugin for OctoberCMS",
-    "homepage": "http://octobercms.com",
-    "keywords": ["october", "cms", "rainlab", "google", "analytics"],
+    "description": "Google Analytics integration plugin for OctoberCMS that uses GA4",
+    "keywords": ["october", "cms", "mohsin", "google", "analytics"],
     "authors": [
         {
-            "name": "Alexey Bobkov",
-            "email": "aleksey.bobkov@gmail.com"
-        },
-        {
-            "name": "Samuel Georges",
-            "email": "daftspunky@gmail.com"
+            "name": "Saifur Rahman Mohsin",
+            "email": "mohsin92@me.com"
         }
     ],
     "require": {
-        "php": ">=7.0",
-        "guzzlehttp/guzzle": "~6.0",
-        "google/apiclient": "^2.4"
+        "php": ">=7.2",
+        "guzzlehttp/guzzle": "~7.0",
+        "google/apiclient": "^2.9"
     }
 }

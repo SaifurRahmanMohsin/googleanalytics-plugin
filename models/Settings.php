@@ -1,4 +1,4 @@
-<?php namespace RainLab\GoogleAnalytics\Models;
+<?php namespace Mohsin\GoogleAnalytics\Models;
 
 use October\Rain\Database\Model;
 
@@ -6,7 +6,7 @@ use October\Rain\Database\Model;
  * Google Analytics settings model
  *
  * @package system
- * @author Alexey Bobkov, Samuel Georges
+ * @author Saifur Rahman Mohsin
  *
  */
 class Settings extends Model
@@ -15,7 +15,7 @@ class Settings extends Model
 
     public $implement = ['System.Behaviors.SettingsModel'];
 
-    public $settingsCode = 'rainlab_googleanalytics_settings';
+    public $settingsCode = 'mohsin_googleanalytics_settings';
 
     public $settingsFields = 'fields.yaml';
 
@@ -27,8 +27,8 @@ class Settings extends Model
      * Validation rules
      */
     public $rules = [
-        'gapi_key'   => 'required_with:profile_id',
-        'profile_id'   => 'required_with:gapi_key'
+        'gapi_key'      => 'required_with:profile_id',
+        'property_id'   => 'required_with:gapi_key'
     ];
 
     public function initSettingsData()

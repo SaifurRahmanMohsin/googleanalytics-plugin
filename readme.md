@@ -1,6 +1,8 @@
-# Google Analytics integration plugin
+# Google/Firebase Analytics Plugin
 
-This plugin adds Google Analytics tracking and reporting features to the [OctoberCMS](http://octobercms.com).
+This plugin is a fork of the Google Analytics [OctoberCMS](http://octobercms.com) plugin. The main difference is that unlike that plugin, this one uses Google Analytics Data API (GA4) which gives both web and app data. Secondly, this plugin abstracts the browsers, top pages, traffic goals, traffic overview and traffic sources reportwidgets into a line, bar, pie\* and percentage\* charts (credit to [Scott Bedard](https://github.com/scottbedard/analyticsextension) for this).
+
+\* Still under-development
 
 ## Configuration
 
@@ -42,17 +44,17 @@ In either case, you should end up on the **Credentials** page and can create you
 
 1. *Paste the email address from the clipboard* in to the field **Add permissions for** and make sure the permission is set to **Read & Analyse**. Click **Add**.
 
-1. Click the **Admin** main menu tab again and select **View > View Settings** from the menu. *Copy to your clipboard* the Profile ID (should be a number).
+1. Click the **Admin** main menu tab again and select **Property > Property Settings** from the menu. *Copy to your clipboard* the Property ID (should be a number).
 
 ### Configure October back-end area
 
 1. Open your October back-end administration area and open **Settings > Google Analytics**.
 
-1. *Paste the Account ID from the clipboard* in to the field **Analytics View/Profile ID number**.
+1. *Paste the Property ID from the clipboard* in to the field **Property ID**.
 
 1. Upload the previously downloaded `.json` private key file to the **Private key** field.
 
-1. Specify the **Tracking ID** (eg `UA-12312312-3`) and **Domain name** values if you are going to use the plugin's built-in tracking component. To find this code, select **Admin > Property > Property Settings** from the Google Analytics menu.
+1. Specify the **Web Measurement ID** (eg `G-G1MMEAPS5`) and **Domain name** values if you are going to use the plugin's built-in tracking component. To find this code, select **Admin > Data Streams > Web** from the Google Analytics menu.
 
 1. If Tracking is not working initially, enter the value `auto` for the **Domain name** field. This is a fix for newborn Google Analytics accounts.
 

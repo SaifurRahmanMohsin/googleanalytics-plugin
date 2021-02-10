@@ -1,13 +1,13 @@
-<?php namespace RainLab\GoogleAnalytics\Classes;
+<?php namespace Mohsin\GoogleAnalytics\Classes;
 
 use App;
 use Config;
 use Google_Client;
 use Google_Cache_File;
-use Google_Service_Analytics;
+use Google_Service_AnalyticsData;
 use Google_Auth_AssertionCredentials;
 use ApplicationException;
-use RainLab\GoogleAnalytics\Models\Settings;
+use Mohsin\GoogleAnalytics\Models\Settings;
 
 class Analytics
 {
@@ -19,24 +19,24 @@ class Analytics
     public $client;
 
     /**
-     * @var Google_Service_Analytics Google API analytics service
+     * @var Google_Service_AnalyticsData Google API analytics service
      */
     public $service;
 
     /**
-     * @var string Google Analytics View ID
+     * @var string Google Analytics Property ID
      */
-    public $viewId;
+    public $propertyId;
 
     protected function init()
     {
         $settings = Settings::instance();
-        if (!strlen($settings->profile_id)) {
-            throw new ApplicationException(trans('rainlab.googleanalytics::lang.strings.notconfigured'));
+        if (!strlen($settings->property_id)) {
+            throw new ApplicationException(trans('mohsin.googleanalytics::lang.strings.notconfigured'));
         }
 
         if (!$settings->gapi_key) {
-            throw new ApplicationException(trans('rainlab.googleanalytics::lang.strings.keynotuploaded'));
+            throw new ApplicationException(trans('mohsin.googleanalytics::lang.strings.keynotuploaded'));
         }
 
         $client = new Google_Client();
@@ -52,14 +52,14 @@ class Analytics
          */
         $auth = json_decode($settings->gapi_key->getContents(), true);
         $client->setAuthConfig($auth);
-        $client->addScope(Google_Service_Analytics::ANALYTICS_READONLY);
+        $client->addScope(Google_Service_AnalyticsData::ANALYTICS_READONLY);
 
         if ($client->isAccessTokenExpired()) {
             $client->refreshTokenWithAssertion();
         }
 
         $this->client = $client;
-        $this->service = new Google_Service_Analytics($client);
-        $this->viewId = 'ga:'.$settings->profile_id;
+        $this->service = new Google_Service_AnalyticsData($client);
+        $this->propertyId = $settings->property_id;
     }
 }
