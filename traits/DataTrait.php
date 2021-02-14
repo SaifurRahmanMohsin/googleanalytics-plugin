@@ -1,7 +1,8 @@
 <?php namespace Mohsin\GoogleAnalytics\Traits;
 
-use ApplicationException;
+use Cache;
 use Exception;
+use ApplicationException;
 use Google_Service_AnalyticsData_RunReportRequest;
 use Mohsin\GoogleAnalytics\Classes\Analytics;
 use Google\Service\Exception as GoogleServiceException;
@@ -9,28 +10,28 @@ use Google\Service\Exception as GoogleServiceException;
 trait DataTrait
 {
     /**
-     * array Available dimensions
+     * array Cache of available dimensions
      */
-    protected $availableDimensions = [];
+    protected $availableDimensionsCache = [];
     
     /**
-     * array Available metrics
+     * array Cache of available metrics
      */
-    protected $availableMetrics = [];
+    protected $availableMetricsCache = [];
 
     public function getDimensionOptions()
     {
-        return $this->availableDimensions;
+        return $this->availableDimensionsCache;
     }
 
     public function getOrderByDimensionOptions()
     {
-        return $this->availableDimensions;
+        return $this->availableDimensionsCache;
     }
 
     public function getMetricOptions()
     {
-        return $this->availableMetrics;
+        return $this->availableMetricsCache;
     }
 
     /**
@@ -53,15 +54,26 @@ trait DataTrait
      */
     protected function loadMeta()
     {
-        $analyticsClient = Analytics::instance();
-        $meta = $analyticsClient->service->properties->getMetadata([
-            'properties/' . $analyticsClient->propertyId . '/metadata'
-        ]);
-        foreach ($meta->dimensions as $dimension) {
-            $this->availableDimensions[$dimension->apiName] = $dimension->uiName;
-        }
-        foreach ($meta->metrics as $metric) {
-            $this->availableMetrics[$metric->apiName] = $metric->uiName;
+        if (!Cache::has('ga4_meta') || empty(Cache::get('ga4_meta'))) {
+            $analyticsClient = Analytics::instance();
+            $meta = $analyticsClient->service->properties->getMetadata([
+                'properties/' . $analyticsClient->propertyId . '/metadata'
+            ]);
+            foreach ($meta->dimensions as $dimension) {
+                $this->availableDimensionsCache[$dimension->apiName] = $dimension->uiName;
+            }
+            foreach ($meta->metrics as $metric) {
+                $this->availableMetricsCache[$metric->apiName] = $metric->uiName;
+            }
+
+            Cache::put('ga4_meta', [
+                'dimensions' => $this->availableDimensionsCache,
+                'metrics'    => $this->availableMetricsCache
+            ], now()->addDays(10));
+        } else {
+            $cacheMeta = Cache::get('ga4_meta');
+            $this->availableDimensionsCache = $cacheMeta['dimensions'];
+            $this->availableMetricsCache = $cacheMeta['metrics'];
         }
     }
 
