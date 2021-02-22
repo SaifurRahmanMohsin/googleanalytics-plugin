@@ -86,7 +86,7 @@ class LineChart extends ReportWidgetBase
             $points[] = $point;
         }
 
-        $this->vars['metric'] = $this->availableMetrics[$this->property('metric')];
+        $this->vars['metric'] = $this->availableMetricsCache[$this->property('metric')];
         $this->vars['rows'] = str_replace('"', '', substr(substr(json_encode($points), 1), 0, -1));
         $this->vars['total'] = $data->getTotals();
     }
