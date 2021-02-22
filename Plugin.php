@@ -50,6 +50,10 @@ class Plugin extends PluginBase
             'Mohsin\GoogleAnalytics\ReportWidgets\PieChart' => [
                 'label'   => 'mohsin.googleanalytics::lang.piechart.label',
                 'context' => 'dashboard'
+            ],
+            'Mohsin\GoogleAnalytics\ReportWidgets\PercentageChart' => [
+                'label'   => 'mohsin.googleanalytics::lang.percentagechart.label',
+                'context' => 'dashboard'
             ]
         ];
     }

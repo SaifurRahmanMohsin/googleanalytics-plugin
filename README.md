@@ -1,8 +1,6 @@
 # Google/Firebase Analytics Plugin
 
-This plugin is a fork of the Google Analytics [OctoberCMS](http://octobercms.com) plugin. The main difference is that unlike that plugin, this one uses Google Analytics Data API (GA4) which gives both web and app data. Secondly, this plugin abstracts the browsers, top pages, traffic goals, traffic overview and traffic sources reportwidgets into a line, bar, pie\* and percentage\* charts (credit to [Scott Bedard](https://github.com/scottbedard/analyticsextension) for this).
-
-\* Still under-development
+This plugin is a fork of the Google Analytics [OctoberCMS](http://octobercms.com) plugin. The main difference is that unlike that plugin, this one uses Google Analytics Data API (GA4) which gives both web and app data. Secondly, this plugin abstracts the browsers, top pages, traffic goals, traffic overview and traffic sources reportwidgets into a line, bar, pie and percentage charts (credit to [Scott Bedard](https://github.com/scottbedard/analyticsextension) for this).
 
 ## Configuration
 

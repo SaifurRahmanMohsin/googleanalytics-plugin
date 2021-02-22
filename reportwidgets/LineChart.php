@@ -1,7 +1,7 @@
 <?php namespace Mohsin\GoogleAnalytics\ReportWidgets;
 
+use ApplicationException;
 use Backend\Classes\ReportWidgetBase;
-use Exception;
 
 /**
  * LineChart Report Widget
@@ -74,10 +74,10 @@ class LineChart extends ReportWidgetBase
             $value = $row->getMetricValues()[0]->getValue();
 
             if (!(bool)strtotime($timeValue)) {
-                throw new \ApplicationException('Invalid value found. Dimension must be a date/time value.');
+                throw new ApplicationException('Invalid value found. Dimension must be a date/time value.');
             }
             if (!(is_numeric($value))) {
-                throw new \ApplicationException('Invalid value found. Metric must be an int/float value.');
+                throw new ApplicationException('Invalid value found. Metric must be an int/float value.');
             }
             $point = [
                 strtotime($timeValue)*1000,

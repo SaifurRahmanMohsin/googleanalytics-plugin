@@ -90,7 +90,7 @@ return [
         'zero_displays_all'     => 'A value of 0 will display all results.',
         'raport_description'    => 'Report description',
     ],
-    'percentage' => [
+    'percentagechart' => [
         'label'              => 'Google Analytics custom percentage chart',
         'widget_title'       => 'Widget title',
         'percentage_chart'   => 'Percentage Chart',

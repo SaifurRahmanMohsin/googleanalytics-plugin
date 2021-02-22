@@ -1,7 +1,6 @@
 <?php namespace Mohsin\GoogleAnalytics\ReportWidgets;
 
 use Backend\Classes\ReportWidgetBase;
-use Exception;
 
 /**
  * PieChart Report Widget
