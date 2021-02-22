@@ -46,6 +46,10 @@ class Plugin extends PluginBase
             'Mohsin\GoogleAnalytics\ReportWidgets\BarChart' => [
                 'label'   => 'mohsin.googleanalytics::lang.barchart.label',
                 'context' => 'dashboard'
+            ],
+            'Mohsin\GoogleAnalytics\ReportWidgets\PieChart' => [
+                'label'   => 'mohsin.googleanalytics::lang.piechart.label',
+                'context' => 'dashboard'
             ]
         ];
     }

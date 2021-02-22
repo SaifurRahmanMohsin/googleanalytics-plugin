@@ -88,7 +88,6 @@ To add the plugin's tracking code to your website just drop the Google Analytics
 
 Some ad-blockers (such as Chrome's uBlock Origin extension or Firefox's own built-in algorithms) may prevent the uploading of the JSON file key. Disabling these, or whitelisting the October CMS website, may resolve this issue for you.
 
-
 ### Newly added dimensions/metrics do not show up in the widget properties dropdown
 
 If you added custom dimensions/metrics or if Google did so, it would normally take 10 days for those to appear as these are cached every 10 days to speed up dashboard widget loads. If you need this to be refreshed immediately, you can manually clear the cache by running the artisan command:
