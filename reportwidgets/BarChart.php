@@ -60,6 +60,11 @@ class BarChart extends ReportWidgetBase
                 'type'              => 'string',
                 'validationPattern' => '^[0-9]+$',
                 'description'       => 'mohsin.googleanalytics::lang.barchart.zero_displays_all'
+            ],
+            'hideNotSet' => [
+                'title'             => 'mohsin.googleanalytics::lang.settings.hide_not_set',
+                'type'              => 'checkbox',
+                'default'           => 0
             ]
         ];
     }

@@ -43,6 +43,11 @@ class LineChart extends ReportWidgetBase
                 'default'           => '30',
                 'type'              => 'string',
                 'validationPattern' => '^[0-9]+$'
+            ],
+            'hideNotSet' => [
+                'title'             => 'mohsin.googleanalytics::lang.settings.hide_not_set',
+                'type'              => 'checkbox',
+                'default'           => 0
             ]
         ];
     }

@@ -67,6 +67,11 @@ class PieChart extends ReportWidgetBase
             ],
             'description' => [
                 'title'             => 'mohsin.googleanalytics::lang.piechart.report_description'
+            ],
+            'hideNotSet' => [
+                'title'             => 'mohsin.googleanalytics::lang.settings.hide_not_set',
+                'type'              => 'checkbox',
+                'default'           => 0
             ]
         ];
     }

@@ -69,6 +69,7 @@ return [
         'domain_name_comment'         => 'Specify the domain name you are going to track',
         'force_ssl'                   => 'Force SSL',
         'force_ssl_comment'           => 'Always use SSL to send data to Google',
+        'hide_not_set'                => 'Hide Not Set?',
     ],
     'linechart'   => [
         'label'                 => 'Google Analytics custom line chart',

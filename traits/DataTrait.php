@@ -115,7 +115,8 @@ trait DataTrait
         }
 
         $analyticsClient = Analytics::instance();
-        return $analyticsClient->service->v1alpha->runReport(new Google_Service_AnalyticsData_RunReportRequest([
+
+        $requestData = [
             'entity' => [
                 'propertyId' => $analyticsClient->propertyId
             ],
@@ -128,6 +129,21 @@ trait DataTrait
             'orderBys' => $orderBys,
             'metrics' => $metrics,
             'dimensions' => $dimensions
-        ]));
+        ];
+
+        if ($this->property('hideNotSet', false)) {
+            $requestData['dimensionFilter'] = [
+                'notExpression' => [
+                    'filter' => [
+                        'fieldName' => $dimension,
+                        'stringFilter' => [
+                            'value' => '(not set)'
+                        ]
+                    ]
+                ]
+            ];
+        }
+
+        return $analyticsClient->service->v1alpha->runReport(new Google_Service_AnalyticsData_RunReportRequest($requestData));
     }
 }
