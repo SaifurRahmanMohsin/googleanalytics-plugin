@@ -19,7 +19,7 @@ class LineChart extends ReportWidgetBase
         return [
             'title' => [
                 'title'             => 'mohsin.googleanalytics::lang.barchart.widget_title',
-                'default'           => 'Bar Chart',
+                'default'           => 'Line Chart',
                 'type'              => 'string',
                 'validationPattern' => '^.+$',
                 'validationMessage' => 'mohsin.googleanalytics::lang.barchart.widget_title_required'
