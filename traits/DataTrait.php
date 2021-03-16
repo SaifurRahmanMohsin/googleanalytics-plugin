@@ -144,6 +144,17 @@ trait DataTrait
             ];
         }
 
-        return $analyticsClient->service->v1alpha->runReport(new Google_Service_AnalyticsData_RunReportRequest($requestData));
+        $analyticsData = $analyticsClient->service->v1alpha->runReport(new Google_Service_AnalyticsData_RunReportRequest($requestData));
+
+        if ($dimension == 'dayOfWeek') {
+            $dowMap = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+            foreach ($analyticsData->getRows() as $row) {
+                foreach ($row->getDimensionValues() as $dimensionRow) {
+                    $dimensionRow->setValue($dowMap[$dimensionRow->getValue()]);
+                }
+            }
+        }
+
+        return $analyticsData;
     }
 }
