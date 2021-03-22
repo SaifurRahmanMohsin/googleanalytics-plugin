@@ -67,6 +67,27 @@ To add the plugin's tracking code to your website just drop the Google Analytics
 {% component 'googleTracker' %}
 ```
 
+## Extending the API request
+
+Filter queries aren't supported yet as October's Inspector Tool does not have a repeater widget to enable multi-form field values to enable such a feature. But there is an alternative to achieve this. You'd can add some custom parameters such as dimension or metric filters to the API before it makes the request, by consuming the **mohsin.googleanalytics.extendRequest** event:
+```php
+Event::listen('mohsin.googleanalytics.extendRequest', function ($widget, $data) {
+    if (strpos(strtolower($widget->property('title')), 'my_widget_title') !== false) {
+        return [
+            'dimensionFilter' => [
+                'filter' => [
+                    'fieldName'    => 'eventName',
+                    'stringFilter' => [
+                        'value' => 'some_event_name'
+                    ],
+                ]
+            ]
+        ];
+    }
+});
+```
+The returning array will be merged with the constructed request, just as seen in [Google Analytics Data API (GA4) documentation](https://developers.google.com/analytics/devguides/reporting/data/v1/rest/v1alpha/TopLevel/runReport#request-body) before sending a request, thus allowing you to filter down queries.
+
 ## Troubleshooting
 
 ### Fix for Windows / XAMPP

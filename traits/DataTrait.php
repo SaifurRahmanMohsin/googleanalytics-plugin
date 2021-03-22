@@ -1,5 +1,6 @@
 <?php namespace Mohsin\GoogleAnalytics\Traits;
 
+use Event;
 use Cache;
 use Exception;
 use ApplicationException;
@@ -130,6 +131,14 @@ trait DataTrait
             'metrics' => $metrics,
             'dimensions' => $dimensions
         ];
+
+        // Allow extension of API request
+        $eventResults = Event::fire('mohsin.googleanalytics.extendRequest', [$this, $requestData]);
+        foreach ($eventResults as $eventResult) {
+            if (is_array($eventResult)) {
+                $requestData = array_merge($requestData, $eventResult);
+            }
+        }
 
         if ($this->property('hideNotSet', false)) {
             $requestData['dimensionFilter'] = [
