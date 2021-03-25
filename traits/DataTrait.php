@@ -4,8 +4,8 @@ use Event;
 use Cache;
 use Exception;
 use ApplicationException;
-use Google_Service_AnalyticsData_RunReportRequest;
 use Mohsin\GoogleAnalytics\Classes\Analytics;
+use Google_Service_AnalyticsData_RunReportRequest;
 use Google\Service\Exception as GoogleServiceException;
 
 trait DataTrait
@@ -155,11 +155,21 @@ trait DataTrait
 
         $analyticsData = $analyticsClient->service->v1alpha->runReport(new Google_Service_AnalyticsData_RunReportRequest($requestData));
 
+        // Conversions for month and day of week based on API schema at https://developers.google.com/analytics/devguides/reporting/data/v1/api-schema
         if ($dimension == 'dayOfWeek') {
             $dowMap = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
             foreach ($analyticsData->getRows() as $row) {
                 foreach ($row->getDimensionValues() as $dimensionRow) {
                     $dimensionRow->setValue($dowMap[$dimensionRow->getValue()]);
+                }
+            }
+        }
+
+        if ($dimension == 'month') {
+            $monthMap = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+            foreach ($analyticsData->getRows() as $row) {
+                foreach ($row->getDimensionValues() as $dimensionRow) {
+                    $dimensionRow->setValue($monthMap[(int)$dimensionRow->getValue()]);
                 }
             }
         }
