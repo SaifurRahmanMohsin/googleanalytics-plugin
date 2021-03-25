@@ -1,5 +1,6 @@
 <?php namespace Mohsin\GoogleAnalytics\Traits;
 
+use Lang;
 use Event;
 use Cache;
 use Exception;
@@ -157,19 +158,40 @@ trait DataTrait
 
         // Conversions for month and day of week based on API schema at https://developers.google.com/analytics/devguides/reporting/data/v1/api-schema
         if ($dimension == 'dayOfWeek') {
-            $dowMap = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+            $dowMap = [
+                'mohsin.googleanalytics::lang.schema.day_of_week.sunday',
+                'mohsin.googleanalytics::lang.schema.day_of_week.monday',
+                'mohsin.googleanalytics::lang.schema.day_of_week.tuesday',
+                'mohsin.googleanalytics::lang.schema.day_of_week.wednesday',
+                'mohsin.googleanalytics::lang.schema.day_of_week.thursday',
+                'mohsin.googleanalytics::lang.schema.day_of_week.friday',
+                'mohsin.googleanalytics::lang.schema.day_of_week.saturday'
+            ];
             foreach ($analyticsData->getRows() as $row) {
                 foreach ($row->getDimensionValues() as $dimensionRow) {
-                    $dimensionRow->setValue($dowMap[$dimensionRow->getValue()]);
+                    $dimensionRow->setValue(Lang::get($dowMap[$dimensionRow->getValue()]));
                 }
             }
         }
 
         if ($dimension == 'month') {
-            $monthMap = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+            $monthMap = [
+                'mohsin.googleanalytics::lang.schema.month.january',
+                'mohsin.googleanalytics::lang.schema.month.february',
+                'mohsin.googleanalytics::lang.schema.month.march',
+                'mohsin.googleanalytics::lang.schema.month.april',
+                'mohsin.googleanalytics::lang.schema.month.may',
+                'mohsin.googleanalytics::lang.schema.month.june',
+                'mohsin.googleanalytics::lang.schema.month.july',
+                'mohsin.googleanalytics::lang.schema.month.august',
+                'mohsin.googleanalytics::lang.schema.month.september',
+                'mohsin.googleanalytics::lang.schema.month.october',
+                'mohsin.googleanalytics::lang.schema.month.november',
+                'mohsin.googleanalytics::lang.schema.month.december'
+            ];
             foreach ($analyticsData->getRows() as $row) {
                 foreach ($row->getDimensionValues() as $dimensionRow) {
-                    $dimensionRow->setValue($monthMap[(int)$dimensionRow->getValue()]);
+                    $dimensionRow->setValue(Lang::get($monthMap[(int)$dimensionRow->getValue()]));
                 }
             }
         }

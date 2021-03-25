@@ -1,6 +1,10 @@
 <?php
 
 return [
+    'plugin' => [
+        'name'        => 'Google Analytics',
+        'description' => 'Provides tracking and reporting using GA4.'
+    ],
     'widgets' => [
         'title_browsers'                         => 'Browsers',
         'description_browsers'                   => 'This report lets you see the number of visits from different browsers people use to reach your site.',
@@ -31,11 +35,11 @@ return [
         'widgets'  => 'View dashboard widgets',
     ],
     'strings' => [
-        'plugin_desc'    => 'Provides the Google Analytics tracking and reporting.',
         'notconfigured'  => 'Google Analytics API access is not configured. Please configure it on the System / Settings / Google Analytics page.',
         'keynotuploaded' => 'Google Analytics API private key is not uploaded. Please configure Google Analytics access on the System / Settings / Google Analytics page.',
         'tracker'        => 'Google Analytics tracker',
         'tracker_desc'   => 'Outputs a tracking code on a page.',
+        'settings_label' => 'GA4 Settings',
         'settings_desc'  => 'Configure Google Analytics API code and tracking options.',
         'page_url'       => 'Page URL',
         'pageviews'      => 'Pageviews',
@@ -72,13 +76,16 @@ return [
         'hide_not_set'                => 'Hide Not Set?',
     ],
     'linechart'   => [
-        'label'                 => 'Google Analytics custom line chart',
-        'show_legend'           => 'Show Legend?'
+        'name'                    => 'Line Chart',
+        'label'                   => 'Google Analytics custom line chart',
+        'show_legend'             => 'Show Legend?',
+        'invalid_dimension_value' => 'Invalid value found. Dimension must be a date/time value.',
+        'invalid_metric_value'    => 'Invalid value found. Metric must be an int/float value.'
     ],
     'barchart'   => [
+        'name'                  => 'Bar Chart',
         'label'                 => 'Google Analytics custom bar chart',
         'widget_title'          => 'Widget title',
-        'bar_chart'             => 'Bar Chart',
         'widget_title_required' => 'The Widget Title is required.',
         'dimension'             => 'Dimension',
         'orderby_dimension'     => 'Dimension to order by',
@@ -92,6 +99,7 @@ return [
         'raport_description'    => 'Report description',
     ],
     'percentagechart' => [
+        'name'               => 'Percentage Chart',
         'label'              => 'Google Analytics custom percentage chart',
         'widget_title'       => 'Widget title',
         'percentage_chart'   => 'Percentage Chart',
@@ -105,6 +113,7 @@ return [
         'zero_displays_all'  => 'A value of 0 will display all results.',
     ],
     'piechart' => [
+        'name'               => 'Pie Chart',
         'label'              => 'Google Analytics custom pie chart',
         'widget_title'       => 'Widget title',
         'pie_chart'          => 'Pie Chart',
@@ -121,4 +130,29 @@ return [
         'zero_displays_all'  => 'A value of 0 will display all results.',
         'report_description' => 'Report description',
     ],
+    'schema' => [
+        'day_of_week' => [
+            'sunday'    => 'Sunday',
+            'monday'    => 'Monday',
+            'tuesday'   => 'Tuesday',
+            'wednesday' => 'Wednesday',
+            'thursday'  => 'Thursday',
+            'friday'    => 'Friday',
+            'saturday'  => 'Saturday'
+        ],
+        'month' => [
+            'january'   => 'January',
+            'february'  => 'February',
+            'march'     => 'March',
+            'april'     => 'April',
+            'may'       => 'May',
+            'june'      => 'June',
+            'july'      => 'July',
+            'august'    => 'August',
+            'september' => 'September',
+            'october'   => 'October',
+            'november'  => 'November',
+            'december'  => 'December'
+        ]
+    ]
 ];

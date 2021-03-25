@@ -18,7 +18,7 @@ class PieChart extends ReportWidgetBase
         return [
             'title' => [
                 'title'             => 'mohsin.googleanalytics::lang.piechart.widget_title',
-                'default'           => 'Pie Chart',
+                'default'           => 'mohsin.googleanalytics::lang.piechart.name',
                 'type'              => 'string',
                 'validationPattern' => '^.+$',
                 'validationMessage' => 'mohsin.googleanalytics::lang.piechart.title_required'

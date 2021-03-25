@@ -1,5 +1,6 @@
 <?php namespace Mohsin\GoogleAnalytics\ReportWidgets;
 
+use Lang;
 use ApplicationException;
 use Backend\Classes\ReportWidgetBase;
 
@@ -19,7 +20,7 @@ class LineChart extends ReportWidgetBase
         return [
             'title' => [
                 'title'             => 'mohsin.googleanalytics::lang.barchart.widget_title',
-                'default'           => 'Line Chart',
+                'default'           => 'mohsin.googleanalytics::lang.linechart.name',
                 'type'              => 'string',
                 'validationPattern' => '^.+$',
                 'validationMessage' => 'mohsin.googleanalytics::lang.barchart.widget_title_required'
@@ -79,10 +80,10 @@ class LineChart extends ReportWidgetBase
             $value = $row->getMetricValues()[0]->getValue();
 
             if (!(bool)strtotime($timeValue)) {
-                throw new ApplicationException('Invalid value found. Dimension must be a date/time value.');
+                throw new ApplicationException(Lang::get('mohsin.googleanalytics::lang.linechart.invalid_dimension_value'));
             }
             if (!(is_numeric($value))) {
-                throw new ApplicationException('Invalid value found. Metric must be an int/float value.');
+                throw new ApplicationException(Lang::get('mohsin.googleanalytics::lang.linechart.invalid_metric_value'));
             }
             $point = [
                 strtotime($timeValue)*1000,

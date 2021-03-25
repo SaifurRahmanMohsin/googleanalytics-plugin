@@ -18,7 +18,7 @@ class PercentageChart extends ReportWidgetBase
         return [
             'title' => [
                 'title'             => 'mohsin.googleanalytics::lang.percentagechart.widget_title',
-                'default'           => 'Percentage Chart',
+                'default'           => 'mohsin.googleanalytics::lang.percentagechart.name',
                 'type'              => 'string',
                 'validationPattern' => '^.+$',
                 'validationMessage' => 'mohsin.googleanalytics::lang.percentagechart.title_required'

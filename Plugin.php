@@ -7,8 +7,8 @@ class Plugin extends PluginBase
     public function pluginDetails()
     {
         return [
-            'name'        => 'Google Analytics',
-            'description' => 'mohsin.googleanalytics::lang.strings.plugin_desc',
+            'name'        => 'mohsin.googleanalytics::lang.plugin.name',
+            'description' => 'mohsin.googleanalytics::lang.plugin.description',
             'author'      => 'Saifur Rahman Mohsin',
             'icon'        => 'icon-bar-chart-o',
             'homepage'    => 'https://github.com/mohsin/googleanalytics-plugin'
@@ -62,7 +62,7 @@ class Plugin extends PluginBase
     {
         return [
             'config' => [
-                'label'       => 'Google Analytics 4',
+                'label'       => 'mohsin.googleanalytics::lang.strings.settings_label',
                 'icon'        => 'icon-bar-chart-o',
                 'description' => 'mohsin.googleanalytics::lang.strings.settings_desc',
                 'class'       => 'Mohsin\GoogleAnalytics\Models\Settings',
