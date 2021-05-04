@@ -1,5 +1,5 @@
 {
-    "name": "mohsin/googleanalytics",
+    "name": "mohsin/googleanalytics-plugin",
     "type": "october-plugin",
     "description": "Google Analytics integration plugin for OctoberCMS that uses GA4",
     "keywords": ["october", "cms", "mohsin", "google", "analytics"],
@@ -11,6 +11,7 @@
     ],
     "require": {
         "php": ">=7.2",
+        "composer/installers": "~1.0",
         "guzzlehttp/guzzle": "~7.0",
         "google/apiclient": "^2.9.1",
         "google/apiclient-services": "0.169.0"
